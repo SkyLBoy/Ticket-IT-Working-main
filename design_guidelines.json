@@ -1,0 +1,133 @@
+{
+  "identity": {
+    "name": "E1",
+    "description": "The Anti-AI Designer. Dark, tactical, precision-obsessed.",
+    "principles": [
+      "Fusion over Imitation",
+      "Emotion First: The user should feel 'in command'.",
+      "Content is King: Data density is a feature, not a bug for IT tools.",
+      "Negative Space vs Density: Use 'Bento' density for data, negative space for flow."
+    ]
+  },
+  "typography": {
+    "font_family_url": "https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap",
+    "primary_font": "\"IBM Plex Sans\", sans-serif",
+    "heading_font": "\"Chivo\", sans-serif",
+    "mono_font": "\"JetBrains Mono\", monospace",
+    "rules": [
+      "Use 'Chivo' (Black/900 or Bold/700) for all main Page Titles and Hero numbers.",
+      "Use 'JetBrains Mono' for Ticket IDs, Status labels, IP addresses, and code snippets.",
+      "Use 'IBM Plex Sans' for all body text, inputs, and standard UI elements.",
+      "Never use 'Inter' for Headings."
+    ]
+  },
+  "colors": {
+    "theme": "dark",
+    "palette": {
+      "background": "#09090b",
+      "card": "#121215",
+      "border": "#27272a",
+      "primary": "#3b82f6",
+      "secondary": "#27272a",
+      "accent": "#f59e0b",
+      "destructive": "#ef4444",
+      "success": "#10b981",
+      "warning": "#eab308",
+      "info": "#0ea5e9"
+    },
+    "semantic_mapping": {
+      "priority": {
+        "Low": "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+        "Medium": "text-blue-500 bg-blue-500/10 border-blue-500/20",
+        "High": "text-orange-500 bg-orange-500/10 border-orange-500/20",
+        "Critical": "text-red-500 bg-red-500/10 border-red-500/20"
+      },
+      "status": {
+        "Open": "text-red-500 bg-red-500/10 border-red-500/20",
+        "In Progress": "text-yellow-500 bg-yellow-500/10 border-yellow-500/20",
+        "Closed": "text-emerald-500 bg-emerald-500/10 border-emerald-500/20"
+      }
+    },
+    "css_variables": {
+      "root": {
+        "--background": "240 10% 3.9%",
+        "--foreground": "0 0% 98%",
+        "--card": "240 10% 5%",
+        "--card-foreground": "0 0% 98%",
+        "--popover": "240 10% 3.9%",
+        "--popover-foreground": "0 0% 98%",
+        "--primary": "217 91% 60%",
+        "--primary-foreground": "222 47% 11%",
+        "--secondary": "240 3.7% 15.9%",
+        "--secondary-foreground": "0 0% 98%",
+        "--muted": "240 3.7% 15.9%",
+        "--muted-foreground": "240 5% 64.9%",
+        "--accent": "240 3.7% 15.9%",
+        "--accent-foreground": "0 0% 98%",
+        "--destructive": "0 84% 60%",
+        "--destructive-foreground": "0 0% 98%",
+        "--border": "240 3.7% 15.9%",
+        "--input": "240 3.7% 15.9%",
+        "--ring": "240 4.9% 83.9%"
+      }
+    }
+  },
+  "layout_strategies": {
+    "dashboard_grid": "Use a Bento Grid approach. Main Stats on top (4 columns). Recent Tickets (2/3 width) + Ticket Distribution Chart (1/3 width) below.",
+    "containers": "Use 'Bordered' style. Container background is transparent or extremely dark, with a 1px border of color #27272a. Do not use heavy drop shadows. Use 'Inner Glow' logic if needed.",
+    "spacing": "Generous padding inside cards (p-6). Tight gaps between cards (gap-4) to create a 'cockpit' feel."
+  },
+  "components": {
+    "buttons": "Sharp corners or very slightly rounded (rounded-md). No pill shapes for main actions. Use 'Ghost' buttons for secondary actions to reduce noise.",
+    "cards": "Flat, dark background (bg-card), 1px border (border-border). No shadow by default. Hover: border-primary/50 transition-colors duration-300.",
+    "inputs": "Background transparent or bg-secondary/50. Border-input. Focus: ring-1 ring-primary border-primary.",
+    "tables": "Compact. Row hover: bg-white/5. Headings: uppercase, text-xs, text-muted-foreground, tracking-wider."
+  },
+  "images": {
+    "login_background": {
+      "url": "https://images.unsplash.com/photo-1762279389042-9439bfb6c155?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHwyfHxmdXR1cmlzdGljJTIwYWJzdHJhY3QlMjB0ZWNobm9sb2d5JTIwYmFja2dyb3VuZCUyMGRhcmt8ZW58MHx8fHwxNzczMzM5NTIwfDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Abstract Neon Digital Landscape",
+      "usage": "Full screen background for Login page with an overlay of black/80."
+    },
+    "server_rack": {
+      "url": "https://images.unsplash.com/photo-1680992046626-418f7e910589?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODh8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMHNlcnZlciUyMHJvb20lMjBkYXJrJTIwbGlnaHRzfGVufDB8fHx8MTc3MzMzOTUxOXww&ixlib=rb-4.1.0&q=85",
+      "alt": "Server Rack Dark",
+      "usage": "Optional sidebar header image or 404 page background."
+    }
+  },
+  "icons": {
+    "library": "lucide-react",
+    "mapping": {
+      "dashboard": "LayoutDashboard",
+      "ticket": "Ticket",
+      "users": "Users",
+      "settings": "Settings",
+      "logout": "LogOut",
+      "search": "Search",
+      "bell": "Bell",
+      "filter": "Filter",
+      "plus": "Plus",
+      "check": "CheckCircle2",
+      "alert": "AlertCircle",
+      "clock": "Clock",
+      "file": "FileText"
+    }
+  },
+  "universal_guidelines": [
+    "Avoid gradients for backgrounds. Use solid dark colors with subtle borders.",
+    "Interactive elements MUST have a hover state (text color change or background tint).",
+    "Use 'sonner' for all notifications.",
+    "Ensure all text has sufficient contrast. Use 'text-white' or 'text-gray-200' for primary text, 'text-gray-400' for secondary.",
+    "Do NOT center align the main dashboard content. Left align fits the technical persona better.",
+    "Animations: Use 'framer-motion' for subtle entrance animations on the dashboard cards (y: 10 -> 0, opacity: 0 -> 1)."
+  ],
+  "instructions_to_main_agent": [
+    "Install required packages: yarn add lucide-react recharts clsx tailwind-merge framer-motion sonner",
+    "Update /app/frontend/src/index.css with the provided CSS variables for the dark theme.",
+    "Import the Google Fonts in /app/frontend/public/index.html or CSS.",
+    "Set the 'dark' class on the HTML or Body tag by default (or handle via a ThemeProvider).",
+    "Use the provided image URLs for the Login page.",
+    "Follow the 'Bento' layout for the Dashboard.",
+    "Implement the Role-Based Access Control (RBAC) in the UI (hide 'Users' link for non-admins)."
+  ]
+}

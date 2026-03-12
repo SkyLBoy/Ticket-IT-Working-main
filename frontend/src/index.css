@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 5%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 217 91% 60%;
+        --primary-foreground: 222 47% 11%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+        --radius: 0.5rem;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: "IBM Plex Sans", sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Chivo", sans-serif;
+    }
+    
+    code, .mono {
+        font-family: "JetBrains Mono", monospace;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: hsl(240 10% 3.9%);
+}
+::-webkit-scrollbar-thumb {
+    background: hsl(240 3.7% 15.9%);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(240 3.7% 25%);
+}
+
+/* Priority badge styles */
+.priority-low { @apply text-emerald-500 bg-emerald-500/10 border border-emerald-500/20; }
+.priority-medium { @apply text-blue-500 bg-blue-500/10 border border-blue-500/20; }
+.priority-high { @apply text-orange-500 bg-orange-500/10 border border-orange-500/20; }
+.priority-critical { @apply text-red-500 bg-red-500/10 border border-red-500/20; }
+
+/* Status badge styles */
+.status-open { @apply text-red-500 bg-red-500/10 border border-red-500/20; }
+.status-in-progress { @apply text-yellow-500 bg-yellow-500/10 border border-yellow-500/20; }
+.status-closed { @apply text-emerald-500 bg-emerald-500/10 border border-emerald-500/20; }
+
+/* Animation classes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out forwards;
+}
