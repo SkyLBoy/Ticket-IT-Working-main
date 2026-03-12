@@ -188,7 +188,7 @@ async def register(user_data: UserCreate):
         "name": user_data.name,
         "email": user_data.email,
         "password": hash_password(user_data.password),
-        "role": user_data.role,
+        "role": "user",  # Force role to 'user' for all registrations
         "created_at": datetime.now(timezone.utc).isoformat()
     }
     await db.users.insert_one(user)

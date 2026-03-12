@@ -4,9 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Card, CardContent } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { toast } from 'sonner';
 import { Server, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -24,7 +23,6 @@ const LoginPage = () => {
   const [registerName, setRegisterName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
-  const [registerRole, setRegisterRole] = useState('user');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -52,7 +50,7 @@ const LoginPage = () => {
     }
     setLoading(true);
     try {
-      await register(registerName, registerEmail, registerPassword, registerRole);
+      await register(registerName, registerEmail, registerPassword, 'user');
       toast.success('Registration successful');
       navigate('/dashboard');
     } catch (error) {
@@ -94,14 +92,12 @@ const LoginPage = () => {
 
         <Card className="border-border bg-card/95 backdrop-blur">
           <Tabs defaultValue="login">
-            <CardHeader className="pb-4">
-              <TabsList className="grid w-full grid-cols-2">
+            <CardContent className="pt-6">
+              <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="login" data-testid="login-tab">Login</TabsTrigger>
                 <TabsTrigger value="register" data-testid="register-tab">Register</TabsTrigger>
               </TabsList>
-            </CardHeader>
             
-            <CardContent>
               <TabsContent value="login" className="mt-0">
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div className="space-y-2">
@@ -172,18 +168,6 @@ const LoginPage = () => {
                       onChange={(e) => setRegisterPassword(e.target.value)}
                       data-testid="register-password-input"
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="register-role">Role</Label>
-                    <Select value={registerRole} onValueChange={setRegisterRole}>
-                      <SelectTrigger data-testid="register-role-select">
-                        <SelectValue placeholder="Select role" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="user">User (Employee)</SelectItem>
-                        <SelectItem value="admin">Admin (IT Technician)</SelectItem>
-                      </SelectContent>
-                    </Select>
                   </div>
                   <Button 
                     type="submit" 
