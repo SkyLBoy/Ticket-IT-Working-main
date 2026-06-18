@@ -6,7 +6,7 @@ import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Card, CardContent } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { toast } from 'sonner';
+import { toast, Toaster } from 'sonner'; // <-- IMPORTANTE: Agregamos Toaster aquí
 import { Server, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -27,16 +27,23 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!loginEmail || !loginPassword) {
-      toast.error('Please fill in all fields');
+      toast.error('Por favor, completa todos los campos');
       return;
     }
     setLoading(true);
     try {
       await login(loginEmail, loginPassword);
-      toast.success('Login successful');
+      toast.success('¡Inicio de sesión exitoso!');
       navigate('/dashboard');
     } catch (error) {
-      toast.error(error.response?.data?.detail || 'Login failed');
+      console.error("Error capturado en Login:", error);
+      
+      // Como tu backend responde 401 para usuarios no registrados o claves incorrectas, entra aquí:
+      if (error.response?.status === 401 || error.response?.status === 404) {
+        toast.error('El correo electrónico o la contraseña son incorrectos. Por favor, verifica tus datos.');
+      } else {
+        toast.error(error.response?.data?.detail || 'Ocurrió un error al intentar iniciar sesión');
+      }
     } finally {
       setLoading(false);
     }
@@ -45,13 +52,13 @@ const LoginPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     if (!registerName || !registerEmail || !registerPassword) {
-      toast.error('Please fill in all fields');
+      toast.error('Por favor, completa todos los campos');
       return;
     }
     setLoading(true);
     try {
       await register(registerName, registerEmail, registerPassword, 'user');
-      toast.success('Registration successful');
+      toast.success('¡Registro exitoso!');
       navigate('/dashboard');
     } catch (error) {
       toast.error(error.response?.data?.detail || 'Registration failed');
@@ -65,6 +72,12 @@ const LoginPage = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       data-testid="login-page"
     >
+      {/* COMPONENTES DE SONNER:
+        Colocamos el contenedor de toasts aquí para asegurar que las alertas 
+        tengan un espacio físico donde renderizarse en pantalla.
+      */}
+      <Toaster position="top-right" richColors />
+
       {/* Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
