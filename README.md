@@ -34,5 +34,7 @@ Sigue estos pasos para poner el proyecto en funcionamiento en tu entorno local.
 ## Ejecutar programa
 
 Ejecutar frontend 'npm start'
+
 Conectar base de datos 'MongoDB'
+
 Ejecutar backend 'python -m uvicorn server:app --reload --port 8000'
